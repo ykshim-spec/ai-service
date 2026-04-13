@@ -23,6 +23,6 @@ _SAMPLE_RESULT = {
 @router.get("/result-demo")
 def result_demo(request: Request):
     return templates.TemplateResponse(
-        "result_demo.html",
-        {"request": request, "result": _SAMPLE_RESULT},
+        name="result_demo.html",
+        context={"request": request, "result": _SAMPLE_RESULT},
     )
