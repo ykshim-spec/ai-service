@@ -1,1 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>설문 결과 미리보기</title>
 
+<style>
+:root {
+  --bg: #f4f5f7;
+  --card: #fff;
+  --text: #1a1a1a;
+  --muted: #5c6370;
+  --border: #e2e4e9;
+  --accent: #2563eb;
+}
+body {
+  margin: 0;
+  font-family: "Noto Sans KR", sans-serif;
+  background: var(--bg);
+}
+.wrap {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 20px;
+}
+h1 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+.period {
+  color: var(--muted);
+  margin-bottom: 15px;
+}
+.summary {
+  margin-bottom: 15px;
+}
+.steps {
+  margin-bottom: 15px;
+}
+.caution {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+.cta {
+  width: 100%;
+  padding: 12px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+  <div class="card">
+
+    <h1>{{ result.track_title }}</h1>
+    <p class="period">예상 기간: {{ result.estimated_period }}</p>
+
+    <p class="summary">{{ result.summary }}</p>
+
+    <ul class="steps">
+      {% for step in result.recommended_steps %}
+      <li>{{ step }}</li>
+      {% endfor %}
+    </ul>
+
+    <p class="caution">{{ result.caution_note }}</p>
+
+    <button class="cta" disabled>{{ result.next_action }}</button>
+
+  </div>
+</div>
+</body>
+</html>
